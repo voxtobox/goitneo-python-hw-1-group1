@@ -1,30 +1,36 @@
+
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
+
 
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
+
 def change_contact(args, contacts):
     name, new_phone = args
     if name in contacts:
-      contacts[name] = new_phone
-      return "Contact updated."
+        contacts[name] = new_phone
+        return "Contact updated."
     else:
-      return "Сontact does not exist."
+        return "Сontact does not exist."
+
 
 def show_phone(args, contacts):
     name = args[0]
     if name in contacts:
-      return contacts[name]
+        return contacts[name]
     else:
-      return "Сontact does not exist."
-    
+        return "Сontact does not exist."
+
+
 def show_all(contacts):
-    return '\n'.join([f'{name} {phone}' for name, phone in contacts.items()])
+    return '\n'.join([f'{name} {phone}'] for name, phone in contacts.items())
+
 
 def main():
     contacts = {}
@@ -45,9 +51,10 @@ def main():
         elif command == "show":
             print(show_phone(args, contacts))
         elif command == 'all':
-            print(show_all(contacts))
+            print(show_all(con))
         else:
             print("Invalid command.")
+
 
 if __name__ == "__main__":
     main()
